@@ -20,8 +20,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(PROJECT_ROOT / ".env")
 
 from backend.models import AskRequest, AskResponse
-from backend.docusense.src.rag import answer_question
-from backend.nexus_agent.agent import run_agent
+
 
 
 
@@ -131,16 +130,18 @@ def health_check():
     }
 
 
+
 @app.post(
     "/ask",
     response_model=AskResponse,
     dependencies=[Depends(verify_api_key)]
 )
-def ask_question(
-    request: AskRequest,
-):
+def ask_question(request: AskRequest):
     try:
         if request.mode == "rag":
+            # Load RAG only when a RAG request arrives.
+            from backend.docusense.src.rag import answer_question
+
             result = answer_question(
                 query=request.query,
                 top_k=request.top_k,
@@ -156,6 +157,9 @@ def ask_question(
             )
 
         if request.mode == "agent":
+            # Load Agent only when an Agent request arrives.
+            from backend.nexus_agent.agent import run_agent
+
             answer = run_agent(request.query)
 
             return AskResponse(
@@ -163,10 +167,18 @@ def ask_question(
                 answer=answer
             )
 
-    except Exception as error:
-        logger.exception("Error while processing /ask request")
-
         raise HTTPException(
             status_code=400,
             detail="Unsupported mode."
+        )
+
+    except HTTPException:
+        raise
+
+    except Exception:
+        logger.exception("Error while processing /ask request")
+
+        raise HTTPException(
+            status_code=500,
+            detail="An internal error occurred while processing your request."
         )

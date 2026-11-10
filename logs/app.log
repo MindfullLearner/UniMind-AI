@@ -1,0 +1,32 @@
+{"timestamp": "2026-11-10T05:52:50.602877+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "GET", "path": "/docs", "status_code": 200, "response_time_ms": 0.98}
+{"timestamp": "2026-11-10T05:52:51.315929+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "GET", "path": "/openapi.json", "status_code": 200, "response_time_ms": 82.56}
+{"timestamp": "2026-11-10T06:05:05.787843+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "GET", "path": "/health", "status_code": 200, "response_time_ms": 1.85}
+{"timestamp": "2026-11-10T06:05:05.788486+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:05:05.879667+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 401, "response_time_ms": 5.55}
+{"timestamp": "2026-11-10T06:05:05.883979+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST http://testserver/ask \"HTTP/1.1 401 Unauthorized\""}
+{"timestamp": "2026-11-10T06:10:54.529188+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "GET", "path": "/health", "status_code": 200, "response_time_ms": 10.19}
+{"timestamp": "2026-11-10T06:10:54.530501+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:10:54.597275+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 401, "response_time_ms": 5.76}
+{"timestamp": "2026-11-10T06:10:54.598019+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST http://testserver/ask \"HTTP/1.1 401 Unauthorized\""}
+{"timestamp": "2026-11-10T06:12:31.088061+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "GET", "path": "/health", "status_code": 200, "response_time_ms": 3.66}
+{"timestamp": "2026-11-10T06:12:31.089184+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:12:31.153621+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 401, "response_time_ms": 5.35}
+{"timestamp": "2026-11-10T06:12:31.154708+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST http://testserver/ask \"HTTP/1.1 401 Unauthorized\""}
+{"timestamp": "2026-11-10T06:31:08.095430+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 200, "response_time_ms": 1398.79}
+{"timestamp": "2026-11-10T06:32:10.450465+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:32:10.595702+00:00", "level": "INFO", "logger": "google_genai.models", "message": "AFC is enabled with max remote calls: 10."}
+{"timestamp": "2026-11-10T06:32:31.431618+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:32:43.316833+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:32:43.330585+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 200, "response_time_ms": 62907.83}
+{"timestamp": "2026-11-10T06:34:50.694782+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:34:50.774225+00:00", "level": "INFO", "logger": "google_genai.models", "message": "AFC is enabled with max remote calls: 10."}
+{"timestamp": "2026-11-10T06:35:34.113549+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:35:51.216445+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T06:35:51.791584+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 200, "response_time_ms": 75405.6}
+{"timestamp": "2026-11-10T08:16:04.804626+00:00", "level": "INFO", "logger": "google_genai.models", "message": "AFC is enabled with max remote calls: 10."}
+{"timestamp": "2026-11-10T08:16:12.932472+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "GET", "path": "/health", "status_code": 200, "response_time_ms": 3.03}
+{"timestamp": "2026-11-10T08:16:12.933395+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: GET http://testserver/health \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T08:16:13.115011+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 401, "response_time_ms": 19.84}
+{"timestamp": "2026-11-10T08:16:13.115851+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST http://testserver/ask \"HTTP/1.1 401 Unauthorized\""}
+{"timestamp": "2026-11-10T08:16:21.431280+00:00", "level": "INFO", "logger": "httpx2", "message": "HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-3.6-flash:generateContent \"HTTP/1.1 200 OK\""}
+{"timestamp": "2026-11-10T08:16:21.451572+00:00", "level": "INFO", "logger": "unimind.requests", "message": "HTTP request completed", "method": "POST", "path": "/ask", "status_code": 200, "response_time_ms": 16797.78}

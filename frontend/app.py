@@ -39,8 +39,8 @@ st.caption("Your AI-powered academic knowledge assistant")
 st.sidebar.title("⚙️ Settings")
 
 mode = st.sidebar.radio(
-    "Choose AI Mode",
-    ["RAG", "Agent"]
+    "Select Mode",
+    ["Auto", "RAG", "Agent"]
 )
 
 st.sidebar.divider()
@@ -114,7 +114,7 @@ if question:
                     f"{API_BASE_URL}/ask",
                     json=payload,
                     headers=headers,
-                    timeout=120
+                    timeout=240
                 )
 
                 response.raise_for_status()

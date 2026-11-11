@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 class AskRequest(BaseModel):
     query: str = Field(min_length=1, max_length=5000)
-    mode: Literal["rag", "agent"] = "rag"
+    mode: Literal["rag", "agent", "auto"] = "auto"
     top_k: int = Field(default=3, ge=1, le=10)
     strategy: Literal["fixed", "sentence"] = "fixed"
 

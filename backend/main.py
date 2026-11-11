@@ -14,6 +14,7 @@ import threading
 
 from collections import defaultdict, deque
 from math import ceil
+from backend.guardrails import scan_text
 
 # Load environment variables from project root
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -131,6 +132,7 @@ def health_check():
 
 
 
+
 @app.post(
     "/ask",
     response_model=AskResponse,
@@ -138,32 +140,66 @@ def health_check():
 )
 def ask_question(request: AskRequest):
     try:
-        if request.mode == "rag":
-            # Load RAG only when a RAG request arrives.
+        # 1. Scan input for prompt injection and PII
+        guardrail_result = scan_text(request.query)
+
+        # 2. Reject suspicious prompt-injection attempts
+        if guardrail_result["is_suspicious"]:
+            logger.warning(
+                "Prompt injection detected",
+                extra={
+                    "request_data": {
+                        "event": "prompt_injection_blocked",
+                        "matched_patterns": guardrail_result[
+                            "matched_patterns"
+                        ]
+                    }
+                }
+            )
+
+            raise HTTPException(
+                status_code=400,
+                detail="Your request was rejected by input safety guardrails."
+            )
+
+        # 3. Use redacted query for AI processing
+        safe_query = guardrail_result["redacted_text"]
+
+        if guardrail_result["has_pii"]:
+            logger.info("PII detected and redacted from user query")
+
+        # 4. Process RAG requests
+        if request.mode in ("agent", "auto"):
             from backend.docusense.src.rag import answer_question
 
             result = answer_question(
-                query=request.query,
+                query=safe_query,
                 top_k=request.top_k,
                 strategy=request.strategy
             )
+
+            citation_validation = result.get("citation_validation")
 
             return AskResponse(
                 mode="rag",
                 answer=result.get("answer", ""),
                 sources=result.get("sources", []),
                 refused=result.get("refused", False),
-                citations_valid=result.get("citations_valid")
+                citations_valid=(
+                    citation_validation.get("valid")
+                    if citation_validation is not None
+                    else None
+                )
             )
 
+        # 5. Process Agent requests
         if request.mode == "agent":
-            # Load Agent only when an Agent request arrives.
             from backend.nexus_agent.agent import run_agent
 
-            answer = run_agent(request.query)
+            answer = run_agent(safe_query)
 
             return AskResponse(
-                mode="agent",
+                mode=request.mode,
                 answer=answer
             )
 

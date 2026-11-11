@@ -133,6 +133,11 @@ if question:
                     st.warning("Citation validation was unsuccessful.")
 
                 # Display RAG sources
+                # Display generated answer
+                with st.chat_message("assistant"):
+                    st.markdown(answer)
+
+                # Display RAG sources
                 sources = result.get("sources", [])
 
                 if sources:
@@ -146,6 +151,8 @@ if question:
                     "role": "assistant",
                     "content": answer
                 })
+
+                
 
             except requests.exceptions.HTTPError as error:
                 if response.status_code == 401:

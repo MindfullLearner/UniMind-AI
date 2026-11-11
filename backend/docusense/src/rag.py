@@ -100,7 +100,7 @@ GROUNDED ANSWER:
 
 
 def validate_citations(answer, source_count):
-    """Check whether generated citation labels exist."""
+    """Check whether generated citation labels exist and are valid."""
 
     cited_labels = re.findall(r"\[(\d+)\]", answer)
 
@@ -110,7 +110,7 @@ def validate_citations(answer, source_count):
     ]
 
     return {
-        "valid": len(invalid_labels) == 0,
+        "valid": bool(cited_labels) and not invalid_labels,
         "invalid_labels": invalid_labels
     }
 
